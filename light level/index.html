@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" href="css/css.css">
+    <script src="script.js"></script>
+    <title>MKBKaushalya-TODO</title>
+	<link rel = "icon" href = 
+"https://res.cloudinary.com/dff4rbfkn/image/upload/ar_1:1,bo_26px_solid_rgb:0e4490,c_fill,g_auto,r_max,w_1000/v1639972581/1259668_original_hadisj.jpg" 
+        type = "image/x-icon">
+		
+			<script src="https://kit.fontawesome.com/938d7bb336.js" crossorigin="anonymous"></script>
+			
+			
+			
+			
+</head>
+
+<body>
+<br><br><center>
+<h2 style="color:white">Image Light View Changer </h2></center>
+<br><br><br><br>
+<div class="container">
+  <div class="target">
+    <div class="img__cover"></div>
+    <div class="img" ></div>
+  </div>
+  
+  <div class="control control--switch">
+    <label for="">Light Switch</label>
+    <input type="checkbox" class="switch" id="light-switch" name="light-switch"/>
+    <label for="light-switch"></label>
+  </div>
+  
+  <div class="control control--range">
+    <label for="">Brightness</label>
+    <input type="range" name="brightness" min="50" max="150" value="100" step="1">
+  </div>
+  
+  <div class="control control--range">
+    <label for="">Color temperature</label>
+    <input type="range" name="temp" min="-50" max="50" value="0" step="1">
+  </div>
+  <a href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/157293/light_on.jpg" download>
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/157293/light_on.jpg" width="0" height="0" alt="" />
+  </a>
+</div>
+
+<script>(function(win, doc) {
+  const $ = s => doc.querySelector(s)
+  const addEvent = (n, e, h) => {
+    n.addEventListener(e, h, false)
+  }
+
+  const changeFilters = () => {
+    target.style['webkit' + 'Filter'] = 'brightness(' + filtersMap['brightness'] + ')'
+  }
+
+  const setFilters = (key, value) => {
+    if (!filtersMap) {return}
+    filtersMap[key] = value
+    changeFilters()
+  }
+
+  let filtersMap = {
+    hue: '0deg',
+    brightness: 1
+  }
+  let tempCover = document.querySelector('.img__cover')
+
+  let s = $('[name="light-switch"]')
+  let b = $('[name="brightness"]')
+  let t = $('[name="temp"]')
+
+  let target = $('.img')
+
+  // turn light on and off
+  addEvent(s, "change", (e) => {
+    target.classList.toggle('img--on')
+  })
+
+
+  addEvent(t, 'input', (e) => {
+    let $val = parseInt(e.target.value)
+    if ($val > 0) {
+      tempCover.style.background = 'rgba(255,255,0,' + Math.abs($val) / 400 + ')'
+    } else {
+      tempCover.style.background = 'rgba(0, 0, 255,' + Math.abs($val) / 400 + ')'
+    }
+  })
+
+  addEvent(b, 'input', (e) => {
+    let $val = parseInt(e.target.value)
+    let $brightness = $val / 100
+    setFilters('brightness', $brightness)
+  })
+
+})(window, document)
+</script>
+</body>
+
+</html>

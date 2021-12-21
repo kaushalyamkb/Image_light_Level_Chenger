@@ -1,0 +1,147 @@
+html {
+  font-size: 15px;
+}
+
+body {
+  background: #212223;
+}
+
+/* STYLE for input range */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: -10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  outline: none;
+  border: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background-color: #a9acb1;
+  border-radius: 15px;
+}
+
+/* STYLE for switch */
+.switch {
+  display: none;
+}
+.switch + label,
+.switch + label::after {
+  display: inline-block;
+  position: relative;
+  width: 54px;
+  height: 34px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 2px solid #dddddd;
+  border-radius: 9999px;
+  transition: all 300ms;
+}
+.switch + label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  background: #ffffff;
+  width: 30px;
+  height: 30px;
+  border: none;
+  box-shadow: 0 5px 5px -1px rgba(0, 0, 0, 0.2), 0 0 0 2px #dddddd;
+}
+.switch:checked + label {
+  border: 2px solid #4bd865;
+  box-shadow: inset 0 0 0 calc(19px) #4bd865;
+}
+.switch:checked + label::after {
+  left: calc(20px);
+  box-shadow: 0 5px 5px -1px rgba(0, 0, 0, 0.2), 0 0 0 2px #4bd865;
+}
+.switch:not(:checked) + label:hover:active {
+  box-shadow: inset 0 0 0 calc(19px) #dddddd;
+}
+.switch + label:hover:active::after {
+  width: calc(35px);
+}
+.switch:checked + label:hover:active::after {
+  left: calc(15px);
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  width: 100%;
+  padding: .65rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.control {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  color: #f5f6f7;
+  margin: .65rem 0;
+  width: 540px;
+  margin: 1rem auto;
+}
+
+.control.control--range > label {
+  flex: 1;
+  white-space: nowrap;
+  min-width: 170px;
+  font-size: 1rem;
+}
+
+.control.control--range > input[type="range"] {
+  flex: 3
+}
+
+.control.control--switch > label:first-child {
+  flex: 1;
+}
+
+.target {
+  width: 547px;
+  height: 210px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.img__cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+}
+
+.img {
+  background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/157293/light_off.jpg) center center no-repeat;
+  width: 547px;
+  height: 210px;
+  position: relative;
+  z-index: 0;
+  transition: background .5s ease-in-out;
+  -moz-transition: background .5s ease-in-out;
+}
+
+.img.img--on {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/157293/light_on.jpg);
+}
